@@ -1,35 +1,73 @@
-const dino = document.getElementById("dino");
-const cactus = document.getElementById("cactus");
-const scoreElement = document.getElementById("score");
-let score = 0;
+// داده‌های نمونه
+const users = [
+    { username: "user1", password: "pass1" },
+    { username: "user2", password: "pass2" }
+];
 
-// پرش دایناسور
-document.addEventListener("keydown", function(event) {
-    if (event.code === "Space") {
-        jump();
+const posts = [
+    { username: "user1", image: "post1.jpg", caption: "این اولین پست من است!", likes: 10, comments: [] },
+    { username: "user2", image: "post2.jpg", caption: "این پست دوم است!", likes: 5, comments: [] }
+];
+
+// عناصر صفحه
+const loginPage = document.getElementById("login-page");
+const mainPage = document.getElementById("main-page");
+const profilePage = document.getElementById("profile-page");
+const loginForm = document.getElementById("login-form");
+const postsContainer = document.getElementById("posts");
+const profilePostsContainer = document.getElementById("profile-posts");
+
+// ورود کاربر
+loginForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
+    const user = users.find(u => u.username === username && u.password === password);
+    if (user) {
+        loginPage.style.display = "none";
+        mainPage.style.display = "block";
+        loadPosts();
+    } else {
+        alert("نام کاربری یا رمز عبور اشتباه است!");
     }
 });
 
-function jump() {
-    if (dino.classList != "jump") {
-        dino.classList.add("jump");
-        setTimeout(() => {
-            dino.classList.remove("jump");
-        }, 500);
+// بارگذاری پست‌ها
+function loadPosts() {
+    postsContainer.innerHTML = "";
+    posts.forEach(post => {
+        const postElement = document.createElement("div");
+        postElement.classList.add("post");
+        postElement.innerHTML = `
+            <img src="${post.image}" alt="پست">
+            <p>${post.caption}</p>
+            <div class="actions">
+                <button onclick="likePost('${post.username}')">❤️ ${post.likes}</button>
+                <button onclick="commentPost('${post.username}')">💬 کامنت</button>
+            </div>
+        `;
+        postsContainer.appendChild(postElement);
+    });
+}
+
+// لایک کردن پست
+function likePost(username) {
+    const post = posts.find(p => p.username === username);
+    if (post) {
+        post.likes++;
+        loadPosts();
     }
 }
 
-// تشخیص برخورد
-let checkCollision = setInterval(() => {
-    let dinoBottom = parseInt(window.getComputedStyle(dino).getPropertyValue("bottom"));
-    let cactusRight = parseInt(window.getComputedStyle(cactus).getPropertyValue("right"));
-
-    if (cactusRight > 50 && cactusRight < 90 && dinoBottom <= 40) {
-        alert("بازی تموم شد! امتیاز شما: " + score);
-        score = 0;
-        scoreElement.innerText = score;
-    } else {
-        score++;
-        scoreElement.innerText = score;
+// کامنت گذاشتن
+function commentPost(username) {
+    const comment = prompt("کامنت خود را وارد کنید:");
+    if (comment) {
+        const post = posts.find(p => p.username === username);
+        if (post) {
+            post.comments.push(comment);
+            alert("کامنت شما ثبت شد!");
+        }
     }
-}, 10);
+}

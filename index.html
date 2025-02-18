@@ -3,15 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بازی دایناسور</title>
+    <title>کپی اینستاگرام</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="game-container">
-        <div id="dino"></div>
-        <div id="obstacle"></div>
+    <!-- صفحه لاگین -->
+    <div id="login-page" class="page">
+        <h1>خوش آمدید</h1>
+        <form id="login-form">
+            <input type="text" id="username" placeholder="نام کاربری" required>
+            <input type="password" id="password" placeholder="رمز عبور" required>
+            <button type="submit">ورود</button>
+        </form>
     </div>
-    <p>امتیاز: <span id="score">0</span></p>
+
+    <!-- صفحه اصلی -->
+    <div id="main-page" class="page" style="display: none;">
+        <h1>صفحه اصلی</h1>
+        <div id="posts">
+            <!-- پست‌ها اینجا نمایش داده می‌شوند -->
+        </div>
+    </div>
+
+    <!-- صفحه پروفایل -->
+    <div id="profile-page" class="page" style="display: none;">
+        <h1>پروفایل کاربر</h1>
+        <div id="profile-posts">
+            <!-- پست‌های کاربر اینجا نمایش داده می‌شوند -->
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
