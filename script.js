@@ -1,9 +1,9 @@
-const hippo = document.getElementById("hippo");
-const obstacle = document.getElementById("obstacle");
+const dino = document.getElementById("dino");
+const cactus = document.getElementById("cactus");
 const scoreElement = document.getElementById("score");
 let score = 0;
 
-// پرش اسب آبی
+// پرش دایناسور
 document.addEventListener("keydown", function(event) {
     if (event.code === "Space") {
         jump();
@@ -11,20 +11,20 @@ document.addEventListener("keydown", function(event) {
 });
 
 function jump() {
-    if (hippo.classList != "jump") {
-        hippo.classList.add("jump");
+    if (dino.classList != "jump") {
+        dino.classList.add("jump");
         setTimeout(() => {
-            hippo.classList.remove("jump");
+            dino.classList.remove("jump");
         }, 500);
     }
 }
 
 // تشخیص برخورد
 let checkCollision = setInterval(() => {
-    let hippoBottom = parseInt(window.getComputedStyle(hippo).getPropertyValue("bottom"));
-    let obstacleRight = parseInt(window.getComputedStyle(obstacle).getPropertyValue("right"));
+    let dinoBottom = parseInt(window.getComputedStyle(dino).getPropertyValue("bottom"));
+    let cactusRight = parseInt(window.getComputedStyle(cactus).getPropertyValue("right"));
 
-    if (obstacleRight > 50 && obstacleRight < 90 && hippoBottom <= 40) {
+    if (cactusRight > 50 && cactusRight < 90 && dinoBottom <= 40) {
         alert("بازی تموم شد! امتیاز شما: " + score);
         score = 0;
         scoreElement.innerText = score;
