@@ -1,0 +1,40 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f7f7f7;
+}
+
+.game-container {
+    position: relative;
+    width: 600px;
+    height: 200px;
+    margin: 0 auto;
+    background-color: #fff;
+    border: 2px solid #000;
+    overflow: hidden;
+}
+
+#hippo {
+    position: absolute;
+    bottom: 0;
+    left: 50px;
+    width: 60px;
+    height: 40px;
+    background-image: url('/hippo.png.jpg'); /* تصویر اسب آبی */
+    background-size: cover;
+}
+
+#obstacle {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 20px;
+    height: 40px;
+    background-color: #ff0000;
+    animation: moveObstacle 2s linear infinite;
+}
+
+@keyframes moveObstacle {
+    from { right: 0; }
+    to { right: 600px; }
+}
