@@ -20,7 +20,7 @@ body {
     left: 50px;
     width: 40px;
     height: 40px;
-    background-image: url('/hippo.png.jpg'); /* تصویر دایناسور */
+    background-image: url('dino.png'); /* تصویر دایناسور */
     background-size: cover;
 }
 
@@ -30,7 +30,7 @@ body {
     right: 0;
     width: 20px;
     height: 40px;
-    background-image: url('/agate.jpg'); /* تصویر کاکتوس */
+    background-image: url('cactus.png'); /* تصویر کاکتوس */
     background-size: cover;
     animation: moveCactus 2s linear infinite;
 }
