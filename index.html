@@ -19,10 +19,21 @@
 
         <!-- فرم ثبت نام -->
         <form id="register-form" style="display: none;">
-            <input type="text" id="new-username" placeholder="نام کاربری جدید" required>
+            <input type="email" id="email" placeholder="ایمیل" required>
             <input type="password" id="new-password" placeholder="رمز عبور جدید" required>
             <button type="submit">ثبت نام</button>
         </form>
+    </div>
+
+    <!-- صفحه تأیید کد -->
+    <div id="verify-page" class="page" style="display: none;">
+        <h1>تأیید ایمیل</h1>
+        <p>یک کد ۶ رقمی به ایمیل شما ارسال شد. لطفاً کد را وارد کنید.</p>
+        <form id="verify-form">
+            <input type="text" id="verification-code" placeholder="کد تأیید" required maxlength="6">
+            <button type="submit">تأیید</button>
+        </form>
+        <p id="error-message" style="color: red; display: none;">کد وارد شده اشتباه می‌باشد.</p>
     </div>
 
     <!-- صفحه اصلی -->
@@ -30,14 +41,6 @@
         <h1>صفحه اصلی</h1>
         <div id="posts">
             <!-- پست‌ها اینجا نمایش داده می‌شوند -->
-        </div>
-    </div>
-
-    <!-- صفحه پروفایل -->
-    <div id="profile-page" class="page" style="display: none;">
-        <h1>پروفایل کاربر</h1>
-        <div id="profile-posts">
-            <!-- پست‌های کاربر اینجا نمایش داده می‌شوند -->
         </div>
     </div>
 
