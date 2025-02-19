@@ -5,8 +5,8 @@ let users = [
 ];
 
 const posts = [
-    { username: "user1", image: "post1.jpg", caption: "این اولین پست من است!", likes: 10, comments: [] },
-    { username: "user2", image: "post2.jpg", caption: "این پست دوم است!", likes: 5, comments: [] }
+    { username: "user1", image: "/hippo.png.jpg", caption: "این اولین پست من است!", likes: 10, comments: [] },
+    { username: "user2", image: "/agate.jpg", caption: "این پست دوم است!", likes: 5, comments: [] }
 ];
 
 // عناصر صفحه
