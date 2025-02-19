@@ -32,6 +32,12 @@ form button {
     cursor: pointer;
 }
 
+#register-link {
+    color: #0095f6;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 #posts, #profile-posts {
     margin-top: 20px;
 }

@@ -1,5 +1,5 @@
 // داده‌های نمونه
-const users = [
+let users = [
     { username: "user1", password: "pass1" },
     { username: "user2", password: "pass2" }
 ];
@@ -14,8 +14,17 @@ const loginPage = document.getElementById("login-page");
 const mainPage = document.getElementById("main-page");
 const profilePage = document.getElementById("profile-page");
 const loginForm = document.getElementById("login-form");
+const registerForm = document.getElementById("register-form");
+const registerLink = document.getElementById("register-link");
 const postsContainer = document.getElementById("posts");
 const profilePostsContainer = document.getElementById("profile-posts");
+
+// نمایش فرم ثبت نام
+registerLink.addEventListener("click", function(event) {
+    event.preventDefault();
+    loginForm.style.display = "none";
+    registerForm.style.display = "block";
+});
 
 // ورود کاربر
 loginForm.addEventListener("submit", function(event) {
@@ -30,6 +39,24 @@ loginForm.addEventListener("submit", function(event) {
         loadPosts();
     } else {
         alert("نام کاربری یا رمز عبور اشتباه است!");
+    }
+});
+
+// ثبت نام کاربر
+registerForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+    const newUsername = document.getElementById("new-username").value;
+    const newPassword = document.getElementById("new-password").value;
+
+    const userExists = users.find(u => u.username === newUsername);
+    if (userExists) {
+        alert("این نام کاربری قبلاً ثبت شده است!");
+    } else {
+        users.push({ username: newUsername, password: newPassword });
+        alert("ثبت نام شما با موفقیت انجام شد!");
+        registerForm.reset();
+        registerForm.style.display = "none";
+        loginForm.style.display = "block";
     }
 });
 
